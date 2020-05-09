@@ -1,0 +1,55 @@
+<atlassian-plugin key="${atlassian.plugin.key}" name="${project.name}" plugins-version="2">
+    <plugin-info>
+        <description>${project.description}</description>
+        <version>${project.version}</version>
+        <vendor name="${project.organization.name}" url="${project.organization.url}" />
+        <param name="plugin-icon">images/pluginIcon.png</param>
+        <param name="plugin-logo">images/pluginLogo.png</param>
+    </plugin-info>
+
+    <!-- add our i18n resource -->
+    <resource type="i18n" name="i18n" location="confluencePlugin"/>
+    
+    <!-- add our web resources -->
+    <web-resource key="confluencePlugin-resources" name="confluencePlugin Web Resources">
+        <dependency>com.atlassian.auiplugin:ajs</dependency>
+        
+        <resource type="download" name="confluencePlugin.css" location="/css/confluencePlugin.css"/>
+        <resource type="download" name="confluencePlugin.js" location="/js/confluencePlugin.js"/>
+        <resource type="download" name="images/" location="/images"/>
+
+        <context>confluencePlugin</context>
+    </web-resource>
+
+    <!-- macro definition -->
+    <xhtml-macro name="helloworld" class="dev.ayohandgod.confluencePlugin.macro.helloworld" key='helloworld-macro'>
+        <description key="helloworld.macro.desc"/>
+        <category name="formatting"/>
+        <parameters>
+                <parameter name="Name" type="string" />
+                <parameter name="Color" type="enum">
+                    <value name="red" />
+                    <value name="green" />
+                    <value name="blue" />
+                    <value name="yellow" />
+                    <value name="purple" />
+                </parameter>
+        </parameters>
+    </xhtml-macro>
+
+    <!-- Template for Blueprint -->
+    <content-template key="simplebp-template" i18n-name-key="my.blueprint.title">
+        <resource name="template" type="download" location="/templates/mytemplate.xml" />
+    </content-template>
+
+    <!-- Add to the Create Menu -->
+    <web-item key="create-by-sample-template" i18n-name-key="my.create-link.title" section="system.create.dialog/content">
+        <description key="my.create-link.description" />
+        <resource name="icon" type="download" location="/images/myblueprint.png" />
+        <param name="blueprintKey" value="my-blueprint" />
+    </web-item>
+
+    <!-- Blueprint -->
+    <blueprint key="my-blueprint" content-template-key="simplebp-template" index-key="my-index" i18n-name-key="my.blueprint.name" />
+    
+</atlassian-plugin>

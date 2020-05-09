@@ -1,0 +1,12 @@
+<table>
+    <tbody>
+        <tr>
+            <th>Name</th>
+            <th>Date</th>
+        </tr>
+        <tr>
+            <td>Enter your name here</td>
+            <td>Enter today's date here</td>
+        </tr>
+    </tbody>
+</table>
